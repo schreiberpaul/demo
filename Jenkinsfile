@@ -18,8 +18,11 @@ pipeline {
                 dependencyCheck additionalArguments: ''' 
                     -o './'
                     -s './'
-                    -f 'XML' 
-                    -prettyPrint''', odcInstallation: 'OWASP Dependency-Check'
+                    -f 'XML'
+                    -f 'HTML'
+                    -prettyPrint''', 
+                    odcInstallation: 'OWASP Dependency-Check',
+                    stopBuild: true
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
