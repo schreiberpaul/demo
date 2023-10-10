@@ -24,7 +24,8 @@ pipeline {
                     --failOnCVSS 0''',
                     stopBuild: true,
                     odcInstallation: 'OWASP Dependency-Check'
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml',
+                failedTotalCritical: 0
             }
         }
     }
