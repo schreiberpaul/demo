@@ -21,10 +21,10 @@ pipeline {
                     -f 'XML'
                     -f 'HTML'
                     -prettyPrint
-                    --failOnCVSS 0''', 
+                    --failOnCVSS 0''',
+                    stopBuild: true,
                     odcInstallation: 'OWASP Dependency-Check'
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml',
-                    stopBuild: true
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
     }
