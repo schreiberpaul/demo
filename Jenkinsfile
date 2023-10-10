@@ -17,5 +17,16 @@ pipeline {
                 }
             }
         }
+        stage('OWASP Dependency Check') {
+            steps {
+            
+                dependencyCheck additionalArguments: ''' 
+                    -o './'
+                    -s './'
+                    -f 'XML' 
+                    -prettyPrint''', odcInstallation: 'OWASP Dependency-Check'
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+            }
+        }
     }
 }
