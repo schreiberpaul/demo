@@ -5,11 +5,6 @@ pipeline {
         }
     }
     stages {
-        stage('SCM') {
-            steps {
-                checkout scm
-            }
-        }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv(installationName: 'SonarQube1') {
@@ -26,6 +21,7 @@ pipeline {
                     -f 'XML' 
                     -prettyPrint''', odcInstallation: 'OWASP Dependency-Check'
                 dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+                dependencyCheckPublisher
             }
         }
     }
