@@ -4,13 +4,17 @@ pipeline {
             label 'built-in'
         }
     }
-    steps {
+    stages {
         stage('SCM') {
-            checkout scm
+            steps {
+                checkout scm
+            }
         }
         stage('SonarQube Analysis') {
-            withSonarQubeEnv() {
-            sh ".mvnw clean verify sonar:sonar -Dsonar.projectKey=demo -Dsonar.projectName='demo'"
+            steps {
+                withSonarQubeEnv() {
+                sh ".mvnw clean verify sonar:sonar -Dsonar.projectKey=demo -Dsonar.projectName='demo'"
+                }
             }
         }
     }
