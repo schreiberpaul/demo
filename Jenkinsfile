@@ -21,9 +21,9 @@ pipeline {
                     -f 'XML'
                     -f 'HTML'
                     -prettyPrint''', 
-                    odcInstallation: 'OWASP Dependency-Check',
+                    odcInstallation: 'OWASP Dependency-Check'
+                dependencyCheckPublisher pattern: 'dependency-check-report.xml',
                     stopBuild: true
-                dependencyCheckPublisher pattern: 'dependency-check-report.xml'
             }
         }
     }
