@@ -1,4 +1,4 @@
-pipeline {
+dpipeline {
     agent {
         node {
             label 'built-in'
@@ -8,7 +8,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv(installationName: 'SonarQube1') {
-                sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=webgoat -Dsonar.projectName='webgoat'"
+                sh "./mvnw clean verify sonar:sonar -Dsonar.projectKey=demo -Dsonar.projectName='demo'"
                 }
             }
         }
